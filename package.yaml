@@ -1,0 +1,56 @@
+name:                "template-hs"
+version:             0.1.0.0
+github:              "rinse/template-hs"
+license:             BSD3
+author:              "rinse"
+maintainer:          "rinse418@gmail.com"
+
+extra-source-files:
+- .gitignore
+- .hlint.yaml
+- README.md
+- package.yaml
+
+# Metadata used when publishing your package
+# synopsis: Template for Haskell program
+# category: {{category}}{{^category}}Web{{/category}}
+
+description: Please see the README on GitHub at <https://github.com/rinse/template-hs#readme>
+
+ghc-options:
+- -Wall
+- -Wcompat
+- -Wincomplete-record-updates
+- -Wincomplete-uni-patterns
+- -Wredundant-constraints
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+
+executables:
+  template-hs-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - template-hs
+
+tests:
+  template-hs-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - template-hs
+    - hspec >= 2.10.10
+    - QuickCheck >= 2.14.3
+    build-tools: hspec-discover
